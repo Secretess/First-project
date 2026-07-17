@@ -1,21 +1,30 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="column items-center">
-      <img
-        alt="Quasar logo 345"
-        src="~@/assets/quasar-logo-vertical.svg"
-        style="width: 200px; height: 200px"
-      />
+  // <q-form ref="myFormRef">
 
-      <q-btn
-        class="q-mt-md"
-        color="primary"
-        to="/second"
-        label="Go to Second Page"
-        no-caps
-      />
-    </div>
-  </q-page>
+setup () {
+  const myFormRef = useTemplateRef('myFormRef')
+
+  function validate () {
+    myFormRef.value.validate().then(success => {
+      if (success) {
+        // yay, models are correct
+      }
+      else {
+        // oh no, user has filled in
+        // at least one invalid value
+      }
+    })
+  }
+
+  // to reset validations:
+  function reset () {
+    myFormRef.value.resetValidation()
+  }
+
+  return {
+    // ...
+  }
+}
 </template>
 
 <script setup>
